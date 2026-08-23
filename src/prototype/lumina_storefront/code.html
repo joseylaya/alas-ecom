@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LUMINA - The New Standard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-container": "#747676",
+                        "secondary-container": "#e5e2e1",
+                        "on-error": "#ffffff",
+                        "secondary-fixed": "#e5e2e1",
+                        "on-surface": "#1c1b1b",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "surface-variant": "#e5e2e1",
+                        "error-container": "#ffdad6",
+                        "primary-fixed-dim": "#c6c6c7",
+                        "on-primary-fixed-variant": "#454747",
+                        "primary-fixed": "#e2e2e2",
+                        "surface-container": "#f1edec",
+                        "on-surface-variant": "#444748",
+                        "on-secondary-fixed-variant": "#474646",
+                        "inverse-primary": "#c6c6c7",
+                        "on-tertiary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed": "#ffdad8",
+                        "outline": "#747878",
+                        "outline-variant": "#c4c7c8",
+                        "inverse-surface": "#313030",
+                        "background": "#fcf8f8",
+                        "primary-container": "#ffffff",
+                        "on-background": "#1c1b1b",
+                        "error": "#ba1a1a",
+                        "surface-tint": "#5d5f5f",
+                        "on-secondary-fixed": "#1c1b1b",
+                        "on-secondary-container": "#656464",
+                        "surface": "#fcf8f8",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed-dim": "#ffb3b1",
+                        "on-secondary": "#ffffff",
+                        "tertiary-container": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "tertiary": "#bb152c",
+                        "primary": "#5d5f5f",
+                        "on-tertiary-container": "#dd3240",
+                        "on-tertiary-fixed": "#410007",
+                        "surface-dim": "#ddd9d9",
+                        "inverse-on-surface": "#f4f0ef",
+                        "secondary": "#5f5e5e",
+                        "surface-container-low": "#f6f3f2",
+                        "on-primary-fixed": "#1a1c1c",
+                        "surface-container-highest": "#e5e2e1",
+                        "surface-container-high": "#ebe7e7",
+                        "surface-bright": "#fcf8f8",
+                        "on-tertiary-fixed-variant": "#92001c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-desktop": "64px",
+                        "container-max": "1280px",
+                        "unit": "8px",
+                        "gutter": "32px",
+                        "section-gap": "120px",
+                        "margin-mobile": "20px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "display-lg": ["Playfair Display"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "headline-md": ["Playfair Display"],
+                        "label-caps": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-sm": ["Playfair Display"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "display-lg": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "display-lg-mobile": ["40px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "headline-md": ["32px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "label-caps": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "letterSpacing": "0.01em", "fontWeight": "400" }],
+                        "headline-sm": ["24px", { "lineHeight": "1.4", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { scroll-behavior: smooth; }
+        .hero-clip { clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%); }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased selection:bg-on-surface selection:text-surface">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-md border-b border-outline-variant/20 transition-all duration-300 ease-in-out">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-unit max-w-container-max mx-auto">
+<div class="flex gap-8 items-center hidden md:flex">
+<a class="font-body-md text-body-md tracking-wide text-on-surface dark:text-inverse-on-surface border-b-2 border-on-surface pb-1" href="#">Shop</a>
+<a class="font-body-md text-body-md tracking-wide text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Collections</a>
+<a class="font-body-md text-body-md tracking-wide text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Editorial</a>
+</div>
+<div class="md:hidden">
+<span class="material-symbols-outlined text-on-surface cursor-pointer">menu</span>
+</div>
+<div class="absolute left-1/2 -translate-x-1/2">
+<a class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface dark:text-inverse-on-surface uppercase tracking-tighter" href="#">LUMINA</a>
+</div>
+<div class="flex gap-4 items-center">
+<button class="text-on-surface hover:text-primary transition-colors duration-300">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<button class="text-on-surface hover:text-primary transition-colors duration-300">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</button>
+<button class="text-on-surface hover:text-primary transition-colors duration-300">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+</button>
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<section class="relative w-full h-[921px] min-h-[600px] flex items-center justify-center pt-24 overflow-hidden">
+<div class="absolute inset-0 z-0">
+<div class="bg-cover bg-center bg-no-repeat w-full h-full opacity-90" data-alt="A striking, high-fashion editorial photograph of a model in minimalist architectural surroundings. The lighting is bright and high-key, creating a pristine light-mode aesthetic with deep black and stark white contrasts. The composition is sparse, emphasizing negative space and clean lines, embodying a modern, luxury ethos." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDH9Jozb8lbFqvJlW6lrwvPPzyjlUkWZ49OEJOiLR8817OKQM6RYRObFTLd1fVkyzjU7rq_cs0a1VgoHgJHTDl8cjM53LzoVOc0KXtDt7pivdMigWVFf7WBZ0KfZWQdH6UZWPNTjYwtpYicnWfYzaaxzArpzLNWXrlpo7iuYV0j0SBYVqJns97axXuHBnAhwsDFi9lHLL7SXRPdvwcl4xZlXKJ1wcK-auOHsiqYj2i5BXKeEKfplmKW9g')"></div>
+<div class="absolute inset-0 bg-surface/10"></div>
+</div>
+<div class="relative z-10 text-center px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto flex flex-col items-center">
+<span class="font-label-caps text-label-caps text-on-surface tracking-widest mb-6 block bg-surface/50 backdrop-blur-sm px-4 py-2 border border-outline-variant/20">AUTUMN / WINTER</span>
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface uppercase tracking-tighter mb-8 max-w-4xl drop-shadow-sm">
+                THE NEW STANDARD
+            </h1>
+<a class="inline-block bg-on-surface text-surface font-label-caps text-label-caps px-8 py-4 uppercase tracking-widest hover:bg-surface-tint transition-colors duration-300 border border-on-surface" href="#">
+                Explore The Edit
+            </a>
+</div>
+</section>
+<!-- Curated Collections (Asymmetrical Grid) -->
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="mb-16 flex flex-col md:flex-row justify-between items-end border-b border-outline-variant/20 pb-8">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-2">Curated Collections</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md">Discover our highly considered selection of essential pieces designed for the modern wardrobe.</p>
+</div>
+<a class="font-label-caps text-label-caps text-on-surface border-b border-on-surface pb-1 hover:text-primary transition-colors mt-6 md:mt-0" href="#">View All</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Large Item -->
+<div class="md:col-span-8 group cursor-pointer">
+<div class="relative aspect-[4/3] overflow-hidden bg-surface-container mb-6">
+<img class="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="A beautifully styled still-life of premium leather accessories arranged on a sleek, pale stone surface. The lighting is soft and diffused, casting gentle shadows that highlight the textures of the materials. The overall palette is muted and sophisticated, reflecting a high-end minimalist design sensibility within a light, airy environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVUxRkee3nsXXexmJ5q_mZraNyQt91GR0-LIxfDPFjUi-2cp9Rs1DJZ8hoYjOn-HtiFMD3aKnnkmt0hSvdvpxB3o4-ratpRWXcY6NHwbMMx7sgyRT557v-Cnhk_e178KfFYDXSDZH3NXz7Qd08I3h3R3pQktHSdCawlaLJfVGuXIEM6qw1yv69Nw6yjq3qogYILOoJgqGEOLkQbO18kT6F-UVTduWLV_QS9DMJeV6U5T4dOvFiR_eLTA"/>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-2">The Archive Collection</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Timeless silhouettes reimagined.</p>
+</div>
+<!-- Stacked Items -->
+<div class="md:col-span-4 flex flex-col gap-gutter">
+<div class="group cursor-pointer">
+<div class="relative aspect-square overflow-hidden bg-surface-container mb-4">
+<img class="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="A close-up, abstract detail shot of finely textured fabric, perhaps a crisp white poplin shirt or a soft beige cashmere knit. The composition focuses strictly on the weave and the subtle interplay of light and shadow across the folds, emphasizing material quality and minimalist luxury." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2ogeglO8yrW7Z6mWcrHwFLojWeHIUV1dQUh0OL-hQEMliXhOyg3beAULylz51IHnL17CeqXmY1vRVBK1FEgPSG7iiavrb7WvPI7KNz3hsw8DsgIY37afT-RM5YktbtSUf5Xo_kxN2LGHjzp7nUbIohybUYLqDcENm_axY7yGLX8eUb5SZeOeEBo4w5eQTzuz-8vTQvx191uOKDQoCDXP_Ll19Q28P-kLr1LC1fmLu2_kziTtJ-uQA9w"/>
+</div>
+<h3 class="font-body-lg text-body-lg font-semibold text-on-surface mb-1">Modern Tailoring</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">Precision cut.</p>
+</div>
+<div class="group cursor-pointer">
+<div class="relative aspect-square overflow-hidden bg-surface-container mb-4">
+<img class="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="An elegant pair of sculptural heels resting on a stark white pedestal against a pale grey background. The lighting is dramatic yet controlled, highlighting the geometric forms of the footwear. The aesthetic is strictly editorial, focusing on form and negative space in a bright, minimalist setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvqVz7QC1SD_yTbc3ti_oT7JbtxWOcd8zpy3d7VIeCYdc6eupAAj54TxpEA9Gck9sYFrZkTkNbC6Tq0BBNaMIGghVM3Imr04FClH04OPPg_na8DI09hHWRHRExaUuDEP-a623jLlxlaNNqBP5xZHBjgRpPVEjk0liggoLeMQickVihVIlpuc-sIVUqNwi0xqlzOgExiSUDOxiKVONpe6oE5JeQOfi_2jrnFS08FHjewW8p9UvjiHmTEw"/>
+</div>
+<h3 class="font-body-lg text-body-lg font-semibold text-on-surface mb-1">Sculptural Footwear</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">Form meets function.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- The Season's Edit -->
+<section class="bg-surface-container-low py-section-gap px-margin-mobile md:px-margin-desktop">
+<div class="max-w-container-max mx-auto text-center mb-16">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-4">The Season's Edit</h2>
+<div class="w-16 h-px bg-on-surface mx-auto"></div>
+</div>
+<div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-2 gap-0 border-y border-outline-variant/20">
+<!-- Left Image -->
+<div class="relative aspect-[3/4] md:border-r border-outline-variant/20 group overflow-hidden">
+<img class="object-cover w-full h-full object-center group-hover:scale-105 transition-transform duration-1000" data-alt="A high-fashion portrait of a model wearing a voluminous, structured coat in a stark, minimalist environment. The background is a seamless, light grey cyclorama. The lighting is sharp and cinematic, creating high-contrast black and white tones that evoke a sense of modern, architectural luxury." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWKmFinJXiXb4SFCwCcRG_BD__8ljapwIDspSS4b0OaTiHO7oG8j3Umf0v2Cjb8dw5Dss49RUeEKsheJFoFx1NBTFZvHV7vi2ySYMaiaH2AfVnPw0XqHlEIynJMDMaBzzd3gHj7yFLSDOFKqN7qoF_dXg4CKqgtZZI7aAo6q4a8YW5-gWoHwxm4l6SyTfdqvpFkI8PBVGv3zYzmV1cz2AHAt5Dv2Fda53Z3TyQOTLl-h3Tilmnv_xF_g"/>
+<div class="absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-surface/80 to-transparent">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Outerwear Redefined</h3>
+<a class="font-label-caps text-label-caps text-on-surface mt-2 inline-block border-b border-on-surface pb-0.5" href="#">Shop Coats</a>
+</div>
+</div>
+<!-- Right Image -->
+<div class="relative aspect-[3/4] group overflow-hidden">
+<img class="object-cover w-full h-full object-center group-hover:scale-105 transition-transform duration-1000" data-alt="A detailed shot of a model's hands holding a minimalist, structured handbag against a clean, light background. The focus is entirely on the precise geometry of the bag and the subtle texture of the leather. The mood is calm, refined, and highly focused on the object's aesthetic purity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuALQ9bs3trXpEcdjczXUKb4u40nO6RAqeDVoKq0RdtnLpmR8hdPZUxo16JX8QkqreVgYWHgOUdOz9t98Lsc0Pg0aR0_0T8gFqY3xfiiHOdLjYbakyXQ8KXvmlB3kELY-cti9aXMjZPsovFetav0g8mGzgJxjRFwohHIWwNEeuiY9KOnl1ZDBGfRJYxd1pl427q7mLWc5D4GaAL7Kw9puW9WOgyZEWV4z19fFAT-ZWv5XsUqsGghPlbBSQ"/>
+<div class="absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-surface/80 to-transparent">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">The Essential Bag</h3>
+<a class="font-label-caps text-label-caps text-on-surface mt-2 inline-block border-b border-on-surface pb-0.5" href="#">Shop Accessories</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Brand Ethos -->
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto text-center flex flex-col items-center">
+<span class="material-symbols-outlined text-4xl text-outline mb-8" data-icon="diamond">diamond</span>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-8 max-w-2xl">
+            "Design is the silent ambassador of your brand."
+        </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl leading-relaxed mb-12">
+            At LUMINA, we believe in the power of restraint. Our collections are born from a desire to strip away the superfluous, leaving only what is essential. We focus on the purity of form, the integrity of materials, and the precision of cut. This is not just fashion; it is an architectural approach to dressing, designed for a life lived with intention.
+        </p>
+<a class="font-label-caps text-label-caps text-on-surface tracking-widest border border-on-surface px-8 py-3 hover:bg-on-surface hover:text-surface transition-colors duration-300" href="#">Read Our Story</a>
+</section>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest dark:bg-surface-dim w-full py-section-gap border-t border-outline-variant/10">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="col-span-1 md:col-span-1 flex flex-col gap-4">
+<h4 class="font-display-lg-mobile text-display-lg-mobile text-on-surface mb-4 tracking-tighter">LUMINA</h4>
+<p class="font-body-md text-body-md text-on-surface-variant opacity-80 hover:opacity-100 transition-opacity">© 2024 LUMINA. All Rights Reserved.</p>
+</div>
+<div class="col-span-1 flex flex-col gap-4">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors" href="#">Brand Story</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors" href="#">Sustainability</a>
+</div>
+<div class="col-span-1 flex flex-col gap-4">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors" href="#">Legal</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors" href="#">Shipping</a>
+</div>
+<div class="col-span-1 flex flex-col gap-4">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors" href="#">Instagram</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors" href="#">Newsletter</a>
+</div>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LUMINA | Checkout</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-container": "#747676",
+                    "secondary-container": "#e5e2e1",
+                    "on-error": "#ffffff",
+                    "secondary-fixed": "#e5e2e1",
+                    "on-surface": "#1c1b1b",
+                    "secondary-fixed-dim": "#c8c6c5",
+                    "surface-variant": "#e5e2e1",
+                    "error-container": "#ffdad6",
+                    "primary-fixed-dim": "#c6c6c7",
+                    "on-primary-fixed-variant": "#454747",
+                    "primary-fixed": "#e2e2e2",
+                    "surface-container": "#f1edec",
+                    "on-surface-variant": "#444748",
+                    "on-secondary-fixed-variant": "#474646",
+                    "inverse-primary": "#c6c6c7",
+                    "on-tertiary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "tertiary-fixed": "#ffdad8",
+                    "outline": "#747878",
+                    "outline-variant": "#c4c7c8",
+                    "inverse-surface": "#313030",
+                    "background": "#fcf8f8",
+                    "primary-container": "#ffffff",
+                    "on-background": "#1c1b1b",
+                    "error": "#ba1a1a",
+                    "surface-tint": "#5d5f5f",
+                    "on-secondary-fixed": "#1c1b1b",
+                    "on-secondary-container": "#656464",
+                    "surface": "#fcf8f8",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed-dim": "#ffb3b1",
+                    "on-secondary": "#ffffff",
+                    "tertiary-container": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "tertiary": "#bb152c",
+                    "primary": "#5d5f5f",
+                    "on-tertiary-container": "#dd3240",
+                    "on-tertiary-fixed": "#410007",
+                    "surface-dim": "#ddd9d9",
+                    "inverse-on-surface": "#f4f0ef",
+                    "secondary": "#5f5e5e",
+                    "surface-container-low": "#f6f3f2",
+                    "on-primary-fixed": "#1a1c1c",
+                    "surface-container-highest": "#e5e2e1",
+                    "surface-container-high": "#ebe7e7",
+                    "surface-bright": "#fcf8f8",
+                    "on-tertiary-fixed-variant": "#92001c"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin-desktop": "64px",
+                    "container-max": "1280px",
+                    "unit": "8px",
+                    "gutter": "32px",
+                    "section-gap": "120px",
+                    "margin-mobile": "20px"
+            },
+            "fontFamily": {
+                    "body-md": [
+                            "Inter"
+                    ],
+                    "display-lg": [
+                            "Playfair Display"
+                    ],
+                    "display-lg-mobile": [
+                            "Playfair Display"
+                    ],
+                    "headline-md": [
+                            "Playfair Display"
+                    ],
+                    "label-caps": [
+                            "Inter"
+                    ],
+                    "body-lg": [
+                            "Inter"
+                    ],
+                    "headline-sm": [
+                            "Playfair Display"
+                    ]
+            },
+            "fontSize": {
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "1.6",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "display-lg": [
+                            "64px",
+                            {
+                                    "lineHeight": "1.1",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "display-lg-mobile": [
+                            "40px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "headline-md": [
+                            "32px",
+                            {
+                                    "lineHeight": "1.3",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "label-caps": [
+                            "12px",
+                            {
+                                    "lineHeight": "1.0",
+                                    "letterSpacing": "0.1em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-lg": [
+                            "18px",
+                            {
+                                    "lineHeight": "1.6",
+                                    "letterSpacing": "0.01em",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-sm": [
+                            "24px",
+                            {
+                                    "lineHeight": "1.4",
+                                    "fontWeight": "600"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+<style>
+        /* Custom scrollbar for an editorial feel */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #fcf8f8; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c4c7c8; 
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #747878; 
+        }
+        
+        /* Smooth scrolling */
+        html { scroll-behavior: smooth; }
+
+        /* Subtle fade-in animation for content */
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        
+        /* Floating label transition */
+        .input-group input:focus + label,
+        .input-group input:not(:placeholder-shown) + label {
+            transform: translateY(-1.5rem) scale(0.85);
+            color: #1c1b1b;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md text-body-md antialiased selection:bg-surface-tint selection:text-surface">
+<!-- TopNavBar Suppressed as per instructions for transactional/checkout pages -->
+<main class="min-h-screen grid grid-cols-1 md:grid-cols-12 max-w-container-max mx-auto md:px-margin-desktop px-margin-mobile gap-gutter py-section-gap">
+<!-- Left Column: Checkout Form -->
+<div class="col-span-1 md:col-span-7 fade-in">
+<header class="mb-16">
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg tracking-tighter uppercase mb-4 text-on-surface">LUMINA</h1>
+<nav class="flex items-center space-x-2 font-label-caps text-label-caps text-on-surface-variant mb-12">
+<span class="hover:text-on-surface cursor-pointer transition-colors">Bag</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span class="text-on-surface border-b border-on-surface pb-0.5">Information</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span>Shipping</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span>Payment</span>
+</nav>
+</header>
+<!-- Express Checkout Options -->
+<section class="mb-12">
+<h2 class="font-label-caps text-label-caps text-center text-on-surface-variant mb-6 relative">
+<span class="bg-surface px-4 relative z-10">Express Checkout</span>
+<div class="absolute inset-0 flex items-center z-0">
+<div class="w-full border-t border-outline-variant/30"></div>
+</div>
+</h2>
+<div class="grid grid-cols-2 gap-4">
+<button class="flex items-center justify-center space-x-2 border border-outline-variant/50 rounded py-3 hover:bg-surface-container-low transition-colors w-full">
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+<span class="font-label-caps text-label-caps">PayMongo</span>
+</button>
+<button class="flex items-center justify-center space-x-2 border border-outline-variant/50 rounded py-3 hover:bg-surface-container-low transition-colors w-full">
+<span class="material-symbols-outlined">credit_card</span>
+<span class="font-label-caps text-label-caps">Gcash</span>
+</button>
+</div>
+</section>
+<div class="flex items-center mb-12">
+<div class="flex-grow border-t border-outline-variant/30"></div>
+<span class="px-4 font-label-caps text-label-caps text-on-surface-variant">OR</span>
+<div class="flex-grow border-t border-outline-variant/30"></div>
+</div>
+<!-- Contact Information -->
+<section class="mb-12">
+<div class="flex justify-between items-end mb-6">
+<h2 class="font-headline-sm text-headline-sm">Contact Information</h2>
+<a class="font-body-md text-body-md text-surface-tint hover:text-on-surface underline transition-colors" href="#">Log in</a>
+</div>
+<div class="relative input-group mb-4">
+<input class="block w-full border-0 border-b border-outline-variant/50 bg-transparent py-4 px-0 text-on-surface focus:border-on-surface focus:ring-0 transition-colors peer font-body-md text-body-md" id="email" placeholder=" " required="" type="email"/>
+<label class="absolute left-0 top-4 text-on-surface-variant transition-all duration-200 cursor-text peer-focus:text-label-caps peer-focus:font-label-caps origin-left font-body-md text-body-md" for="email">Email Address</label>
+</div>
+<div class="flex items-center mt-4">
+<input class="w-4 h-4 rounded-sm border-outline-variant text-on-surface focus:ring-on-surface bg-transparent accent-on-surface" id="newsletter" type="checkbox"/>
+<label class="ml-3 font-body-md text-body-md text-on-surface-variant" for="newsletter">Email me with news and offers</label>
+</div>
+</section>
+<!-- Shipping Address -->
+<section class="mb-12">
+<h2 class="font-headline-sm text-headline-sm mb-6">Shipping Address</h2>
+<div class="relative input-group mb-4">
+<select class="block w-full border-0 border-b border-outline-variant/50 bg-transparent py-4 px-0 text-on-surface focus:border-on-surface focus:ring-0 transition-colors font-body-md text-body-md appearance-none" id="country">
+<option value="PH">Philippines</option>
+<option value="US">United States</option>
+<option value="UK">United Kingdom</option>
+</select>
+<label class="absolute left-0 -top-1.5 font-label-caps text-label-caps text-on-surface-variant" for="country">Country/Region</label>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-on-surface-variant">
+<span class="material-symbols-outlined">expand_more</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+<div class="relative input-group">
+<input class="block w-full border-0 border-b border-outline-variant/50 bg-transparent py-4 px-0 text-on-surface focus:border-on-surface focus:ring-0 transition-colors peer font-body-md text-body-md" id="firstName" placeholder=" " required="" type="text"/>
+<label class="absolute left-0 top-4 text-on-surface-variant transition-all duration-200 cursor-text peer-focus:text-label-caps peer-focus:font-label-caps origin-left font-body-md text-body-md" for="firstName">First Name</label>
+</div>
+<div class="relative input-group">
+<input class="block w-full border-0 border-b border-outline-variant/50 bg-transparent py-4 px-0 text-on-surface focus:border-on-surface focus:ring-0 transition-colors peer font-body-md text-body-md" id="lastName" placeholder=" " required="" type="text"/>
+<label class="absolute left-0 top-4 text-on-surface-variant transition-all duration-200 cursor-text peer-focus:text-label-caps peer-focus:font-label-caps origin-left font-body-md text-body-md" for="lastName">Last Name</label>
+</div>
+</div>
+<div class="relative input-group mb-4">
+<input class="block w-full border-0 border-b border-outline-variant/50 bg-transparent py-4 px-0 text-on-surface focus:border-on-surface focus:ring-0 transition-colors peer font-body-md text-body-md" id="address" placeholder=" " required="" type="text"/>
+<label class="absolute left-0 top-4 text-on-surface-variant transition-all duration-200 cursor-text peer-focus:text-label-caps peer-focus:font-label-caps origin-left font-body-md text-body-md" for="address">Address</label>
+</div>
+<div class="relative input-group mb-4">
+<input class="block w-full border-0 border-b border-outline-variant/50 bg-transparent py-4 px-0 text-on-surface focus:border-on-surface focus:ring-0 transition-colors peer font-body-md text-body-md" id="apartment" placeholder=" " type="text"/>
+<label class="absolute left-0 top-4 text-on-surface-variant transition-all duration-200 cursor-text peer-focus:text-label-caps peer-focus:font-label-caps origin-left font-body-md text-body-md" for="apartment">Apartment, suite, etc. (optional)</label>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+<div class="relative input-group">
+<input class="block w-full border-0 border-b border-outline-variant/50 bg-transparent py-4 px-0 text-on-surface focus:border-on-surface focus:ring-0 transition-colors peer font-body-md text-body-md" id="city" placeholder=" " required="" type="text"/>
+<label class="absolute left-0 top-4 text-on-surface-variant transition-all duration-200 cursor-text peer-focus:text-label-caps peer-focus:font-label-caps origin-left font-body-md text-body-md" for="city">City</label>
+</div>
+<div class="relative input-group">
+<select class="block w-full border-0 border-b border-outline-variant/50 bg-transparent py-4 px-0 text-on-surface focus:border-on-surface focus:ring-0 transition-colors font-body-md text-body-md appearance-none" id="province">
+<option disabled="" selected="" value="">Province</option>
+<option value="NCR">Metro Manila</option>
+<option value="CEB">Cebu</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-on-surface-variant">
+<span class="material-symbols-outlined">expand_more</span>
+</div>
+</div>
+<div class="relative input-group">
+<input class="block w-full border-0 border-b border-outline-variant/50 bg-transparent py-4 px-0 text-on-surface focus:border-on-surface focus:ring-0 transition-colors peer font-body-md text-body-md" id="postal" placeholder=" " required="" type="text"/>
+<label class="absolute left-0 top-4 text-on-surface-variant transition-all duration-200 cursor-text peer-focus:text-label-caps peer-focus:font-label-caps origin-left font-body-md text-body-md" for="postal">Postal code</label>
+</div>
+</div>
+<div class="relative input-group mb-8">
+<input class="block w-full border-0 border-b border-outline-variant/50 bg-transparent py-4 px-0 text-on-surface focus:border-on-surface focus:ring-0 transition-colors peer font-body-md text-body-md" id="phone" placeholder=" " required="" type="tel"/>
+<label class="absolute left-0 top-4 text-on-surface-variant transition-all duration-200 cursor-text peer-focus:text-label-caps peer-focus:font-label-caps origin-left font-body-md text-body-md" for="phone">Phone</label>
+</div>
+<div class="flex items-center justify-between mt-8">
+<a class="flex items-center font-body-md text-body-md text-surface-tint hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined mr-2">arrow_back</span>
+                        Return to bag
+                    </a>
+<button class="bg-on-surface text-surface py-4 px-8 rounded font-label-caps text-label-caps hover:bg-surface-tint transition-colors uppercase tracking-widest">
+                        Continue to Shipping
+                    </button>
+</div>
+</section>
+</div>
+<!-- Right Column: Order Summary (Bag) -->
+<div class="col-span-1 md:col-span-5 md:pl-margin-desktop md:border-l border-outline-variant/20 mt-12 md:mt-0 fade-in delay-100 h-full">
+<div class="sticky top-12">
+<h3 class="font-headline-sm text-headline-sm mb-8">Order Summary</h3>
+<!-- Cart Items -->
+<div class="space-y-6 mb-8">
+<!-- Item 1 -->
+<div class="flex items-start space-x-6">
+<div class="relative w-24 h-32 flex-shrink-0 bg-surface-container-low rounded overflow-hidden">
+<img alt="Product thumbnail" class="w-full h-full object-cover grayscale mix-blend-multiply opacity-90" data-alt="A minimalist studio shot of a high-end structured tote bag in charcoal black leather, set against a pristine white background with subtle natural light defining its premium texture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzDqqXH__mkmy6S02g-fmSQtOy_fzLt0G5rh2-_Ooq5nhDm55jX7zBbwaHtIMH3YaYRT9i0FGBBrFf8PCfIfl3kbi82_xQqq6INLzFv4NLao4YKjpxOpXB8bSqBYZRuk_bSNe4IBGT3kvgIfVhZVu8GrJlkfJmr_Yg7nxoesi3nkVz6KRYJYTeBO7SVgxo7BUCsBbC0EGBOq6130J2mrqs8wCGdCZGATJUIi5cmdQiGsHP1juQXlewmQ"/>
+<span class="absolute top-1 right-1 bg-surface-container-high text-on-surface font-label-caps text-[10px] w-5 h-5 flex items-center justify-center rounded-full opacity-80">1</span>
+</div>
+<div class="flex-grow flex flex-col h-32 justify-between py-1">
+<div>
+<h4 class="font-body-md text-body-md text-on-surface">The Structured Tote</h4>
+<p class="font-body-md text-[14px] text-on-surface-variant mt-1">Charcoal / One Size</p>
+</div>
+<p class="font-body-md text-body-md text-on-surface">$245.00</p>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex items-start space-x-6">
+<div class="relative w-24 h-32 flex-shrink-0 bg-surface-container-low rounded overflow-hidden">
+<img alt="Product thumbnail" class="w-full h-full object-cover grayscale mix-blend-multiply opacity-90" data-alt="A sophisticated flat lay photograph of a minimalist silk scarf in muted stone gray, draped elegantly over a light, textured surface. Bright, clean light-mode aesthetic highlighting the fine fabric." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVbmj76FJ0dnKdN32q9xsOabVQ6W-JK-xhYWmePTL_wlhESTKUI1JlGJ-LyJ7zZ4e8P95wmVogvuJHL16fdzQLxEQgmZ11WexwxbJvl8afjXxHvgAMnnELmsP9qFUxOJjhNgXhjwW1SmEHwxkKX0KltZuNF84DOfssBuBlrsO5ISVy97JZALm_utjv44sJzYjQv_Us4q9sVEXaiyq8ChqgwDqxQAd09WfEjwDkRbT2EUeR_mm_e25oig"/>
+<span class="absolute top-1 right-1 bg-surface-container-high text-on-surface font-label-caps text-[10px] w-5 h-5 flex items-center justify-center rounded-full opacity-80">2</span>
+</div>
+<div class="flex-grow flex flex-col h-32 justify-between py-1">
+<div>
+<h4 class="font-body-md text-body-md text-on-surface">Silk Essential Scarf</h4>
+<p class="font-body-md text-[14px] text-on-surface-variant mt-1">Stone / Standard</p>
+</div>
+<p class="font-body-md text-body-md text-on-surface">$170.00</p>
+</div>
+</div>
+</div>
+<div class="border-t border-outline-variant/30 py-6 mb-6">
+<div class="flex space-x-4">
+<div class="relative input-group flex-grow">
+<input class="block w-full border border-outline-variant/50 bg-transparent py-3 px-4 text-on-surface focus:border-on-surface focus:ring-0 transition-colors peer font-body-md text-body-md rounded" id="discount" placeholder=" " type="text"/>
+<label class="absolute left-4 top-3.5 text-on-surface-variant transition-all duration-200 cursor-text peer-focus:text-[10px] peer-focus:-top-2 peer-focus:bg-surface peer-focus:px-1 origin-left font-body-md text-body-md" for="discount">Gift card or discount code</label>
+</div>
+<button class="bg-surface-container-high text-on-surface px-6 rounded font-label-caps text-label-caps border border-outline-variant/20 hover:bg-surface-container-highest transition-colors">
+                            Apply
+                        </button>
+</div>
+</div>
+<!-- Totals -->
+<div class="space-y-4 mb-6 text-body-md font-body-md">
+<div class="flex justify-between text-on-surface-variant">
+<span>Subtotal</span>
+<span class="text-on-surface">$415.00</span>
+</div>
+<div class="flex justify-between text-on-surface-variant">
+<span>Shipping</span>
+<span class="text-label-caps font-label-caps text-on-surface mt-1">Calculated at next step</span>
+</div>
+<div class="flex justify-between text-on-surface-variant">
+<span>Taxes</span>
+<span class="text-on-surface">$33.20</span>
+</div>
+</div>
+<div class="border-t border-outline-variant/50 pt-6">
+<div class="flex justify-between items-end">
+<span class="font-headline-sm text-headline-sm text-on-surface">Total</span>
+<div class="text-right">
+<span class="font-label-caps text-label-caps text-on-surface-variant mr-2">USD</span>
+<span class="font-headline-md text-headline-md text-on-surface">$448.20</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Component Execution -->
+<footer class="bg-surface-container-lowest text-on-surface w-full py-section-gap border-t border-outline-variant/10 grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop max-w-container-max mx-auto font-body-md text-body-md opacity-80 hover:opacity-100 transition-opacity">
+<div class="col-span-1">
+<div class="font-display-lg text-display-lg-mobile text-on-surface mb-6">LUMINA</div>
+<p class="text-on-surface-variant">© 2024 LUMINA. All Rights Reserved.</p>
+</div>
+<div class="col-span-1 md:col-span-3 flex flex-wrap gap-8 md:justify-end items-start mt-8 md:mt-0">
+<a class="text-on-surface-variant hover:text-on-surface transition-colors" href="#">Brand Story</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors" href="#">Sustainability</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors" href="#">Legal</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors" href="#">Shipping</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors" href="#">Instagram</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors" href="#">Newsletter</a>
+</div>
+</footer>
+</body></html>

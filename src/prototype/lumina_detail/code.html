@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LUMINA | Obsidian Overcoat</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary-container": "#747676",
+                      "secondary-container": "#e5e2e1",
+                      "on-error": "#ffffff",
+                      "secondary-fixed": "#e5e2e1",
+                      "on-surface": "#1c1b1b",
+                      "secondary-fixed-dim": "#c8c6c5",
+                      "surface-variant": "#e5e2e1",
+                      "error-container": "#ffdad6",
+                      "primary-fixed-dim": "#c6c6c7",
+                      "on-primary-fixed-variant": "#454747",
+                      "primary-fixed": "#e2e2e2",
+                      "surface-container": "#f1edec",
+                      "on-surface-variant": "#444748",
+                      "on-secondary-fixed-variant": "#474646",
+                      "inverse-primary": "#c6c6c7",
+                      "on-tertiary": "#ffffff",
+                      "on-error-container": "#93000a",
+                      "tertiary-fixed": "#ffdad8",
+                      "outline": "#747878",
+                      "outline-variant": "#c4c7c8",
+                      "inverse-surface": "#313030",
+                      "background": "#fcf8f8",
+                      "primary-container": "#ffffff",
+                      "on-background": "#1c1b1b",
+                      "error": "#ba1a1a",
+                      "surface-tint": "#5d5f5f",
+                      "on-secondary-fixed": "#1c1b1b",
+                      "on-secondary-container": "#656464",
+                      "surface": "#fcf8f8",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary-fixed-dim": "#ffb3b1",
+                      "on-secondary": "#ffffff",
+                      "tertiary-container": "#ffffff",
+                      "on-primary": "#ffffff",
+                      "tertiary": "#bb152c",
+                      "primary": "#5d5f5f",
+                      "on-tertiary-container": "#dd3240",
+                      "on-tertiary-fixed": "#410007",
+                      "surface-dim": "#ddd9d9",
+                      "inverse-on-surface": "#f4f0ef",
+                      "secondary": "#5f5e5e",
+                      "surface-container-low": "#f6f3f2",
+                      "on-primary-fixed": "#1a1c1c",
+                      "surface-container-highest": "#e5e2e1",
+                      "surface-container-high": "#ebe7e7",
+                      "surface-bright": "#fcf8f8",
+                      "on-tertiary-fixed-variant": "#92001c"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "margin-desktop": "64px",
+                      "container-max": "1280px",
+                      "unit": "8px",
+                      "gutter": "32px",
+                      "section-gap": "120px",
+                      "margin-mobile": "20px"
+              },
+              "fontFamily": {
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "display-lg": [
+                              "Playfair Display"
+                      ],
+                      "display-lg-mobile": [
+                              "Playfair Display"
+                      ],
+                      "headline-md": [
+                              "Playfair Display"
+                      ],
+                      "label-caps": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "headline-sm": [
+                              "Playfair Display"
+                      ]
+              },
+              "fontSize": {
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg": [
+                              "64px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "40px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-md": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "1.0",
+                                      "letterSpacing": "0.1em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-sm": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "600"
+                              }
+                      }
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+      </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md antialiased selection:bg-tertiary selection:text-on-tertiary">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-md border-b border-outline-variant/20 transition-all duration-300 ease-in-out">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-unit max-w-container-max mx-auto">
+<div class="hidden md:flex gap-8 items-center">
+<a class="font-body-md text-body-md tracking-wide text-on-surface dark:text-inverse-on-surface border-b-2 border-on-surface pb-1 hover:text-primary transition-colors duration-300" href="#">Shop</a>
+<a class="font-body-md text-body-md tracking-wide text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Collections</a>
+<a class="font-body-md text-body-md tracking-wide text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Editorial</a>
+</div>
+<div class="flex-shrink-0">
+<a class="font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface dark:text-inverse-on-surface uppercase tracking-tighter" href="/">LUMINA</a>
+</div>
+<div class="flex gap-4 items-center">
+<button aria-label="search" class="text-on-surface dark:text-inverse-on-surface hover:text-primary transition-colors duration-300">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<button aria-label="person" class="text-on-surface dark:text-inverse-on-surface hover:text-primary transition-colors duration-300">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</button>
+<button aria-label="shopping_bag" class="text-on-surface dark:text-inverse-on-surface hover:text-primary transition-colors duration-300 relative">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+<span class="absolute -top-1 -right-1 flex h-3 w-3 items-center justify-center rounded-full bg-tertiary text-[8px] font-bold text-on-tertiary">2</span>
+</button>
+</div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="pt-32 pb-section-gap">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Image Gallery (Left - 7 cols) -->
+<div class="lg:col-span-7 flex flex-col gap-unit">
+<!-- Hero Image -->
+<div class="aspect-[3/4] w-full bg-surface-container-low rounded-DEFAULT overflow-hidden group">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="A high fashion editorial shot of a sleek, structured black minimalist overcoat worn by a model in a stark, bright, brutalist architectural setting. The lighting is crisp and natural, highlighting the premium matte texture of the wool fabric against the smooth concrete background. The aesthetic is extremely clean, high-end, and architectural, adhering to a stark black, white, and subtle grey color palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuARGuNNzjM_fQv9Q0VEbSHTbN2vLjN_6mR-mgdjeRLfXV3AYCdnYnhxlgCBiSKGniLk7Q9IFQyoPcYLmrKfIsxv2ovVK9OseAvypQM2xrFsCiaxVLRwaqQTUb9qDXr2nX2UCUlPkgwW-pViFM746EnLnqaic1Pw46h0ztO1dNHms6Pycr4d3TUnpaS8hQu30QH8DgB9TKhKx37G6XRNPWuKlBwnYr85On2S_3fM0woWu3tQdbSDzNhRBw"/>
+</div>
+<!-- Thumbnail Grid -->
+<div class="grid grid-cols-2 gap-unit">
+<div class="aspect-[3/4] w-full bg-surface-container-low rounded-DEFAULT overflow-hidden">
+<img class="w-full h-full object-cover hover:scale-105 transition-transform duration-500 ease-out cursor-pointer" data-alt="A detailed macro shot focusing on the collar and lapel of a premium black wool overcoat. The lighting emphasizes the precise, sharp tailoring and the fine, luxurious weave of the fabric. The composition is minimalist, utilizing negative space and a stark, bright background to draw attention to the garment's quality. A touch of architectural shadow adds depth to this high-end fashion image." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBds505UdamRNQhMnwH1JNw8NpfUlk4aKtbclnQ2oxIWS2YqHpCehbtPdLY9A-yQC9bl0GjrDGXqSSObD3uk-q82oB3aIz1uHeVsYfGeicILvVyS2CP7UYyqBUO6DrdmjSmQMChYaskpIcqrPghRrumtPD2tJAC815xWj3J07IRiBEjofaBuxEcp8oLmjB3kXUjeL2j_luvGeuNW6CYTNnwXX-9Du3E96JhunzMUQ8r8Cll_X-EuW59Ag"/>
+</div>
+<div class="aspect-[3/4] w-full bg-surface-container-low rounded-DEFAULT overflow-hidden">
+<img class="w-full h-full object-cover hover:scale-105 transition-transform duration-500 ease-out cursor-pointer" data-alt="A lifestyle shot of a premium black overcoat draped over a minimalist white designer chair in a bright, modern studio. The soft, diffuse lighting casts gentle shadows on a pristine white floor, emphasizing the coat's elegant silhouette and high-quality material. The overall mood is quiet luxury, editorial, and sophisticated, aligning perfectly with a high-end fashion brand's aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5WDmjID40SxCiDn8so-bYxdAzxjuPr3lpDUA4HDUObdV0XJPdD24ORMGOtmpiclbrDyQTfINAphCRrkoSCqfwBd54dgoHfblGwe7uCoRCpn4QCwb1wOVZUStH_omKEAe2oqJM60L82BuYhQ0T_K0mIJiB7zqCKbP2Fo-Mt3JsZf_QkWH8uP3_9drfTCjzM1Tz0CFZYCDnJzgcc8p6-QCW2OgprEKVY4UKzOT5A7GLMJeVDDP8_cadnQ"/>
+</div>
+</div>
+</div>
+<!-- Product Info (Right - 5 cols) -->
+<div class="lg:col-span-5 lg:pl-gutter flex flex-col pt-8 lg:pt-0 sticky top-32 h-fit">
+<!-- Breadcrumb -->
+<nav aria-label="Breadcrumb" class="flex text-on-surface-variant font-label-caps text-label-caps mb-8">
+<a class="hover:text-on-surface transition-colors" href="#">OUTERWEAR</a>
+<span class="mx-2">/</span>
+<a class="hover:text-on-surface transition-colors" href="#">COATS</a>
+</nav>
+<!-- Header -->
+<div class="mb-12">
+<h1 class="font-headline-md text-headline-sm md:text-headline-md text-on-surface mb-2">The Obsidian Overcoat</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-6">Structured Wool Cashmere Blend</p>
+<p class="font-body-md text-body-md text-on-surface font-semibold tracking-wide">$ 1,450.00</p>
+</div>
+<!-- Color Selection -->
+<div class="mb-10">
+<div class="flex justify-between items-center mb-4">
+<span class="font-label-caps text-label-caps text-on-surface">COLOR: ONYX BLACK</span>
+</div>
+<div class="flex gap-3">
+<button aria-label="Onyx Black" class="w-10 h-10 rounded-full bg-[#1c1b1b] ring-1 ring-offset-2 ring-on-surface focus:outline-none transition-all"></button>
+<button aria-label="Stone Grey" class="w-10 h-10 rounded-full bg-[#e5e2e1] ring-1 ring-outline-variant hover:ring-on-surface focus:outline-none transition-all"></button>
+<button aria-label="Charcoal" class="w-10 h-10 rounded-full bg-[#5d5f5f] ring-1 ring-outline-variant hover:ring-on-surface focus:outline-none transition-all"></button>
+</div>
+</div>
+<!-- Size Selection -->
+<div class="mb-12">
+<div class="flex justify-between items-center mb-4">
+<span class="font-label-caps text-label-caps text-on-surface">SIZE</span>
+<button class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface underline transition-colors">SIZE GUIDE</button>
+</div>
+<div class="grid grid-cols-4 gap-2">
+<button class="py-3 border border-on-surface text-on-surface font-body-md text-body-md hover:bg-surface-container-low transition-colors rounded-DEFAULT">36</button>
+<button class="py-3 border border-outline-variant text-on-surface font-body-md text-body-md hover:border-on-surface transition-colors rounded-DEFAULT">38</button>
+<button class="py-3 border border-outline-variant text-on-surface font-body-md text-body-md hover:border-on-surface transition-colors rounded-DEFAULT">40</button>
+<button class="py-3 border border-outline-variant text-on-surface font-body-md text-body-md hover:border-on-surface transition-colors rounded-DEFAULT">42</button>
+<button class="py-3 border border-outline-variant text-on-surface font-body-md text-body-md hover:border-on-surface transition-colors rounded-DEFAULT opacity-50 cursor-not-allowed">44</button>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex flex-col gap-4 mb-16">
+<button class="w-full py-4 bg-tertiary text-on-tertiary font-label-caps text-label-caps tracking-widest hover:bg-on-tertiary-container transition-colors rounded-DEFAULT flex items-center justify-center gap-2">
+                        ADD TO BAG
+                        <span class="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<button class="w-full py-4 border border-on-surface text-on-surface font-label-caps text-label-caps tracking-widest hover:bg-surface-container-lowest transition-colors rounded-DEFAULT flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="favorite_border">favorite_border</span>
+                        SAVE TO WISHLIST
+                    </button>
+</div>
+<!-- Accordion Details -->
+<div class="border-t border-outline-variant/30">
+<details class="group py-6 border-b border-outline-variant/30" open="">
+<summary class="flex justify-between items-center font-label-caps text-label-caps text-on-surface cursor-pointer list-none">
+                            DESCRIPTION
+                            <span class="material-symbols-outlined group-open:rotate-180 transition-transform duration-300" data-icon="keyboard_arrow_down">keyboard_arrow_down</span>
+</summary>
+<div class="pt-4 font-body-md text-body-md text-on-surface-variant space-y-4">
+<p>An exercise in architectural tailoring. The Obsidian Overcoat is crafted from a heavyweight Italian wool-cashmere blend, offering unparalleled drape and warmth without sacrificing structure.</p>
+<p>Featuring a stark, concealed placket, sharp peak lapels, and minimal topstitching, it is designed to be the definitive outer layer for the modern purist.</p>
+</div>
+</details>
+<details class="group py-6 border-b border-outline-variant/30">
+<summary class="flex justify-between items-center font-label-caps text-label-caps text-on-surface cursor-pointer list-none">
+                            DETAILS &amp; CARE
+                            <span class="material-symbols-outlined group-open:rotate-180 transition-transform duration-300" data-icon="keyboard_arrow_down">keyboard_arrow_down</span>
+</summary>
+<div class="pt-4 font-body-md text-body-md text-on-surface-variant">
+<ul class="list-disc pl-5 space-y-2">
+<li>80% Virgin Wool, 20% Cashmere (Woven in Biella, Italy)</li>
+<li>Fully lined in cupro</li>
+<li>Concealed horn button fastening</li>
+<li>Two internal welt pockets</li>
+<li>Dry clean only</li>
+</ul>
+</div>
+</details>
+<details class="group py-6 border-b border-outline-variant/30">
+<summary class="flex justify-between items-center font-label-caps text-label-caps text-on-surface cursor-pointer list-none">
+                            SHIPPING &amp; RETURNS
+                            <span class="material-symbols-outlined group-open:rotate-180 transition-transform duration-300" data-icon="keyboard_arrow_down">keyboard_arrow_down</span>
+</summary>
+<div class="pt-4 font-body-md text-body-md text-on-surface-variant">
+<p>Complimentary express shipping on all orders. Returns are accepted within 14 days of delivery provided the item is unworn and tags remain attached.</p>
+</div>
+</details>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest dark:bg-surface-dim border-t border-outline-variant/10 w-full py-section-gap">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="md:col-span-1 mb-8 md:mb-0">
+<div class="font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface dark:text-inverse-on-surface mb-4">LUMINA</div>
+<p class="font-body-md text-body-md text-on-surface-variant dark:text-inverse-on-surface/70">
+                    © 2024 LUMINA. All Rights Reserved.
+                </p>
+</div>
+<div class="md:col-span-3 grid grid-cols-2 md:grid-cols-3 gap-8">
+<div class="flex flex-col gap-4">
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-inverse-on-surface/70 hover:text-on-surface dark:hover:text-inverse-on-surface transition-colors opacity-80 hover:opacity-100" href="#">Brand Story</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-inverse-on-surface/70 hover:text-on-surface dark:hover:text-inverse-on-surface transition-colors opacity-80 hover:opacity-100" href="#">Sustainability</a>
+</div>
+<div class="flex flex-col gap-4">
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-inverse-on-surface/70 hover:text-on-surface dark:hover:text-inverse-on-surface transition-colors opacity-80 hover:opacity-100" href="#">Legal</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-inverse-on-surface/70 hover:text-on-surface dark:hover:text-inverse-on-surface transition-colors opacity-80 hover:opacity-100" href="#">Shipping</a>
+</div>
+<div class="flex flex-col gap-4">
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-inverse-on-surface/70 hover:text-on-surface dark:hover:text-inverse-on-surface transition-colors opacity-80 hover:opacity-100" href="#">Instagram</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-inverse-on-surface/70 hover:text-on-surface dark:hover:text-inverse-on-surface transition-colors opacity-80 hover:opacity-100" href="#">Newsletter</a>
+</div>
+</div>
+</div>
+</footer>
+</body></html>
