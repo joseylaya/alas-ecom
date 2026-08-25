@@ -1,4 +1,4 @@
-import type { Product } from "@/types/catalog";
+import type { Product } from "../../types/catalog";
 
 const collectionImages = [
   "https://lh3.googleusercontent.com/aida-public/AB6AXuAUkRCauqE1WLyxyFEhBT_R_WQZh45NtILOGC-ChrDKkmNuMwimAykqzAMSv2WZzydf_wK-gem5wYkHsUJA8amKvJgCPFiYhhiYF_85bVyOTkdINWv9irEITSWTPAdKjDbkxilEcVyGpmAAhlF4l4yGPCC-NwoYiKqkzpEnqepxVnvOkoQ0SUvJ2P3nVVCKMIgRO6AyCSUDqgfWz07A_Y30UGaT4iOc7fsMBDeBMV7CfjWiWGOisWL6mw",
@@ -15,16 +15,16 @@ const detailGallery = [
 ];
 
 const definitions = [
-  ["core-logo-tee", "The Obsidian Overcoat", "Structured wool-cashmere tailoring with a precise architectural silhouette.", 145000, "Outerwear"],
-  ["terrain-overshirt", "Architectural Leather Tote", "A refined everyday carry in softly structured leather.", 65000, "Accessories"],
-  ["studio-cap", "Sculptural Ankle Boot", "A clean-lined leather boot made for everyday movement.", 52000, "Footwear"],
-  ["bone-vessel", "Bone Glaze Ceramic Vessel", "A quiet sculptural object finished in a warm bone glaze.", 28000, "Objects"],
-  ["modernist-chair", "Modernist Lounge Chair", "An enduring study in steel, textile, and proportion.", 145000, "Living"],
-  ["silver-cuff", "Minimalist Silver Cuff", "Hand-finished sterling silver with a mirrored edge.", 34000, "Accessories"]
+  ["core-logo-tee", "The Obsidian Overcoat", "Structured wool-cashmere tailoring with a precise architectural silhouette.", 145000, "Outerwear", "Wool Cashmere"],
+  ["terrain-overshirt", "Architectural Leather Tote", "A refined everyday carry in softly structured leather.", 65000, "Accessories", "Leather"],
+  ["studio-cap", "Sculptural Ankle Boot", "A clean-lined leather boot made for everyday movement.", 52000, "Footwear", "Leather"],
+  ["bone-vessel", "Bone Glaze Ceramic Vessel", "A quiet sculptural object finished in a warm bone glaze.", 28000, "Objects", "Ceramic"],
+  ["modernist-chair", "Modernist Lounge Chair", "An enduring study in steel, textile, and proportion.", 145000, "Living", "Steel Textile"],
+  ["silver-cuff", "Minimalist Silver Cuff", "Hand-finished sterling silver with a mirrored edge.", 34000, "Accessories", "Sterling Silver"]
 ] as const;
 
-export const products: Product[] = definitions.map(([slug, name, description, priceCentavos, collection], index) => ({
-  id: `c${index + 1}`, slug, name, description, image: index === 0 ? detailGallery[0] : collectionImages[index], gallery: index === 0 ? detailGallery : [collectionImages[index]], collection,
+export const products: Product[] = definitions.map(([slug, name, description, priceCentavos, collection, material], index) => ({
+  id: `c${index + 1}`, slug, name, description, image: index === 0 ? detailGallery[0] : collectionImages[index], gallery: index === 0 ? detailGallery : [collectionImages[index]], collection, material,
   variants: ["36", "38", "40", "42", "44"].map((size, variantIndex) => ({ id: `v${index * 5 + variantIndex + 1}`, size, color: index === 0 ? "Onyx Black" : "Core", sku: `ALAS-${index + 1}-${size}`, priceCentavos, stock: size === "44" && index === 0 ? 0 : 5 + variantIndex }))
 }));
 
