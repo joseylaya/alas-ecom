@@ -1,6 +1,8 @@
 import { notFound } from "next/navigation";
 import { AddToCart } from "@/components/commerce/add-to-cart";
 import { ProductCard } from "@/components/commerce/product-card";
+import { ProductGallery } from "@/components/commerce/product-gallery";
+import { MobileProductView } from "@/components/commerce/mobile-product-view";
 import { getCatalog } from "@/features/catalog/catalog.service";
 import { formatPeso } from "@/lib/money";
 
@@ -18,11 +20,9 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     .slice(0, 3);
 
   return <>
-    <main className="mx-auto grid max-w-[1440px] lg:grid-cols-[minmax(0,1.15fr)_minmax(380px,.85fr)]">
-      <section className="bg-[#f1edec]">
-        <div className="aspect-[4/5] max-h-[820px] overflow-hidden lg:aspect-[4/4.65]"><img src={gallery[0]} alt={product.name} className="h-full w-full object-cover" /></div>
-        {gallery.length > 1 && <div className="grid grid-cols-2 gap-px bg-white">{gallery.slice(1).map((image, index) => <div className="aspect-square overflow-hidden bg-[#f1edec]" key={image}><img src={image} alt={`${product.name} detail ${index + 1}`} className="h-full w-full object-cover" /></div>)}</div>}
-      </section>
+    <MobileProductView images={gallery} product={product} alternatives={alternatives} />
+    <main className="mx-auto hidden max-w-[1440px] lg:grid lg:grid-cols-[minmax(0,1.15fr)_minmax(380px,.85fr)]">
+      <ProductGallery images={gallery} productName={product.name} />
       <aside className="bg-white px-5 py-8 sm:px-8 lg:sticky lg:top-[65px] lg:h-[calc(100vh-65px)] lg:overflow-y-auto lg:px-10 lg:py-10 xl:px-14">
         <div className="mx-auto max-w-md">
           <p className="text-[10px] uppercase tracking-[.16em] text-black/55">{product.collection} / ALAS</p>

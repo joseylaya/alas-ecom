@@ -166,7 +166,7 @@ export function CheckoutForm() {
       </section>
 
       <p className="mt-8 text-xs leading-6 text-black/50">Your products and selected delivery fee are recalculated securely before PayMongo generates a single-use QR code.</p>
-      <div className="mt-10 flex items-center justify-between gap-5"><Link href="/cart" className="text-sm text-black/65">← Return to bag</Link><button disabled={isChecking || isQuoting || !selectedQuote} className="bg-black px-7 py-4 text-[10px] font-semibold uppercase tracking-[.14em] text-white disabled:opacity-50">{isChecking ? "Creating secure QR…" : "Continue to QR Ph"}</button></div>
+      <div className="mt-10 flex items-center justify-between gap-5"><Link href="/cart" className="flex items-center gap-2 text-sm text-black/65"><svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M19 12H5M11 18l-6-6 6-6" /></svg> Return to bag</Link><button disabled={isChecking || isQuoting || !selectedQuote} className="bg-black px-7 py-4 text-[10px] font-semibold uppercase tracking-[.14em] text-white disabled:opacity-50">{isChecking ? "Creating secure QR…" : "Continue to QR Ph"}</button></div>
       {message && <p role="status" className="mt-5 text-sm text-rose-700">{message}</p>}
     </form>
 

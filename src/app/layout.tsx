@@ -4,6 +4,7 @@ import "./globals.css";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { getCatalog } from "@/features/catalog/catalog.service";
+import { ChatWidget } from "@/components/support/chat-widget";
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -23,5 +24,5 @@ export const metadata: Metadata = { title: "ALAS — Clothing", description: "AL
 
 export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const products = await getCatalog();
-  return <html lang="en" className={`${manrope.variable} ${inter.variable}`}><body><Header products={products} />{children}<Footer /></body></html>;
+  return <html lang="en" className={`${manrope.variable} ${inter.variable}`}><body><Header products={products} />{children}<Footer /><ChatWidget /></body></html>;
 }

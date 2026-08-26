@@ -46,6 +46,10 @@ a[class*="border"][class*="px-"]:hover { transform: translateY(-1px); box-shadow
 .font-editorial { font-family: var(--font-heading); font-weight: 600; }
 ::selection { background: #1c1b1b; color: #fcf8f8; }
 
+/* Keep support available above full-screen mobile product experiences. */
+button[aria-controls="alas-support-chat"] { z-index: 65; }
+#alas-support-chat { z-index: 70; }
+
 .alas-hero { position: relative; height: calc(100svh - 65px); min-height: 560px; overflow: hidden; background: #111; }
 .alas-hero-shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(4,4,4,.08) 35%, rgba(4,4,4,.72) 100%); }
 .alas-hero-content { position: absolute; z-index: 2; inset: auto 20px 82px; color: white; text-align: center; }
