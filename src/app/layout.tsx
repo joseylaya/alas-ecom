@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Manrope } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/header";
@@ -21,6 +21,13 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = { title: "ALAS — Clothing", description: "ALAS clothing, made for the everyday." };
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  interactiveWidget: "resizes-visual",
+  themeColor: "#fcf8f8",
+};
 
 export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const products = await getCatalog();

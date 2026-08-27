@@ -27,7 +27,7 @@ export function MobileProductView({ images, product, alternatives }: { images: s
     setActiveIndex((index) => Math.max(0, Math.min(images.length - 1, index + direction)));
   }
 
-  return <><section className={`fixed inset-0 z-[55] min-h-[560px] overflow-hidden bg-[#eee9e7] transition-transform duration-500 ease-[cubic-bezier(.22,.8,.25,1)] lg:hidden ${recommendationsOpen ? "-translate-y-[38svh]" : "translate-y-0"}`}>
+  return <><section className={`mobile-product-experience fixed inset-0 z-[55] h-[100dvh] min-h-0 overflow-hidden bg-[#eee9e7] transition-transform duration-500 ease-[cubic-bezier(.22,.8,.25,1)] lg:hidden ${recommendationsOpen ? "-translate-y-[38dvh]" : "translate-y-0"}`}>
     <div
       className="absolute inset-0 touch-pan-y"
       onClick={() => { if (!didSwipe.current) setOptionsOpen((open) => !open); didSwipe.current = false; }}
@@ -64,22 +64,22 @@ export function MobileProductView({ images, product, alternatives }: { images: s
       <div className={`pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent transition-all duration-300 ${optionsOpen ? "h-40 opacity-30" : "h-72 opacity-100"}`} />
     </div>
 
-    <div className="pointer-events-none absolute inset-x-0 top-0 flex items-start justify-between p-5 text-white">
+    <div className="pointer-events-none absolute inset-x-0 top-0 flex items-start justify-between px-5 pb-5 pt-[max(1.25rem,env(safe-area-inset-top))] text-white">
       <div><p className="text-[10px] font-semibold uppercase tracking-[.16em] text-white/75">{product.collection} / ALAS</p><h1 className="font-editorial mt-1 text-2xl drop-shadow-sm">{product.name}</h1><p className="mt-1.5 text-sm font-semibold text-white drop-shadow-sm">{formatPeso(price)}</p></div>
       <Link href="/cart" aria-label={`Shopping bag with ${cartCount} items`} className="pointer-events-auto relative grid h-11 w-11 place-items-center rounded-2xl border border-white/25 bg-black/25 text-white shadow-[0_8px_22px_rgba(0,0,0,.18)] backdrop-blur-md"><svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M5.5 8.5h13l-1 12h-11l-1-12Z" /><path d="M9 9V6.5a3 3 0 0 1 6 0V9" /></svg>{cartCount > 0 && <span className="absolute -right-1.5 -top-1.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-white px-1 text-[10px] font-bold text-black shadow-sm">{cartCount}</span>}</Link>
     </div>
 
-    {images.length > 1 && <div className={`absolute inset-x-0 flex justify-center gap-1.5 transition-all duration-300 ${optionsOpen ? "bottom-[calc(48svh+12px)]" : "bottom-48"}`} style={optionsOpen && sheetOffset > 0 ? { transform: `translateY(${sheetOffset}px)` } : undefined} aria-label={`Photo ${activeIndex + 1} of ${images.length}`}>
+    {images.length > 1 && <div className={`absolute inset-x-0 flex justify-center gap-1.5 transition-all duration-300 ${optionsOpen ? "bottom-[calc(48dvh+12px)]" : "bottom-[calc(env(safe-area-inset-bottom)+6.75rem)]"}`} style={optionsOpen && sheetOffset > 0 ? { transform: `translateY(${sheetOffset}px)` } : undefined} aria-label={`Photo ${activeIndex + 1} of ${images.length}`}>
       {images.map((_, index) => <button key={index} type="button" onClick={(event) => { event.stopPropagation(); setActiveIndex(index); }} aria-label={`Show photo ${index + 1}`} className={`h-1.5 rounded-full shadow-sm transition-all ${index === activeIndex ? "w-6 bg-white" : "w-1.5 bg-white/55"}`} />)}
     </div>}
 
-    {!optionsOpen && <button type="button" onClick={() => setOptionsOpen(true)} className="absolute inset-x-5 bottom-24 flex min-h-[76px] items-center gap-3 rounded-[22px] border border-white bg-white p-2.5 text-left text-black shadow-[0_18px_45px_rgba(0,0,0,.24)]">
-      <span className="relative h-14 w-14 flex-none overflow-hidden rounded-[15px] bg-[#eee9e7]"><Image src={images[activeIndex]} alt="" fill sizes="56px" draggable={false} className="object-cover" /></span>
+    {!optionsOpen && <button type="button" onClick={() => setOptionsOpen(true)} className="absolute bottom-[calc(env(safe-area-inset-bottom)+1rem)] left-4 right-[5.25rem] flex min-h-[64px] items-center gap-2.5 rounded-[22px] border border-white bg-white p-2 text-left text-black shadow-[0_18px_45px_rgba(0,0,0,.24)]">
+      <span className="relative h-12 w-12 flex-none overflow-hidden rounded-[14px] bg-[#eee9e7]"><Image src={images[activeIndex]} alt="" fill sizes="48px" draggable={false} className="object-cover" /></span>
       <span className="min-w-0 flex-1"><span className="block truncate font-editorial text-[15px] font-semibold leading-tight text-[#171717]">{product.name}</span><span className="mt-1 block text-[10px] font-medium uppercase tracking-[.08em] text-black/45">Choose size · {formatPeso(price)}</span></span>
       <span className="grid h-11 w-11 flex-none place-items-center rounded-[14px] bg-gradient-to-br from-black via-[#202020] to-[#454545] text-white shadow-[0_8px_18px_rgba(0,0,0,.22)]"><svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg></span>
     </button>}
 
-    <div className={`absolute inset-x-0 bottom-0 h-[48svh] overflow-y-auto rounded-t-[30px] bg-white px-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-3 shadow-[0_-24px_70px_rgba(0,0,0,.24)] ease-out ${sheetDragging ? "transition-none" : "transition-transform duration-300"}`} style={{ transform: optionsOpen ? `translateY(${sheetOffset}px)` : "translateY(105%)" }} aria-hidden={!optionsOpen}>
+    <div className={`absolute inset-x-0 bottom-0 h-[48dvh] overflow-y-auto rounded-t-[30px] bg-white px-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-3 shadow-[0_-24px_70px_rgba(0,0,0,.24)] ease-out ${sheetDragging ? "transition-none" : "transition-transform duration-300"}`} style={{ transform: optionsOpen ? `translateY(${sheetOffset}px)` : "translateY(105%)" }} aria-hidden={!optionsOpen}>
       <button
         type="button"
         onClick={() => setOptionsOpen(false)}
@@ -94,7 +94,7 @@ export function MobileProductView({ images, product, alternatives }: { images: s
       <AddToCart product={product} showCheckout />
     </div>
   </section>
-    {alternatives.length > 0 && <section className={`fixed inset-x-0 bottom-0 z-[56] h-[38svh] rounded-t-[30px] bg-[#fcf8f8] px-5 pb-[max(1rem,env(safe-area-inset-bottom))] pt-4 shadow-[0_-22px_65px_rgba(0,0,0,.18)] transition-transform duration-500 ease-[cubic-bezier(.22,.8,.25,1)] lg:hidden ${recommendationsOpen ? "translate-y-0" : "translate-y-full"}`}>
+    {alternatives.length > 0 && <section className={`fixed inset-x-0 bottom-0 z-[56] h-[38dvh] rounded-t-[30px] bg-[#fcf8f8] px-5 pb-[max(1rem,env(safe-area-inset-bottom))] pt-4 shadow-[0_-22px_65px_rgba(0,0,0,.18)] transition-transform duration-500 ease-[cubic-bezier(.22,.8,.25,1)] lg:hidden ${recommendationsOpen ? "translate-y-0" : "translate-y-full"}`}>
       <button type="button" onClick={() => setRecommendationsOpen(false)} className="mx-auto block px-8 pb-3" aria-label="Return to product"><span className="block h-1.5 w-14 rounded-full bg-black/15" /></button>
       <div className="mb-3 flex items-end justify-between"><div><p className="text-[9px] font-semibold uppercase tracking-[.16em] text-black/40">Continue exploring</p><h2 className="font-editorial mt-1 text-xl">You may also like</h2></div><span className="text-[9px] uppercase tracking-[.12em] text-black/40">Swipe</span></div>
       <div className="flex snap-x gap-3 overflow-x-auto pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
