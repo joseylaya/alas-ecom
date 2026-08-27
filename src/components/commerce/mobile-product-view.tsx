@@ -27,7 +27,7 @@ export function MobileProductView({ images, product, alternatives }: { images: s
     setActiveIndex((index) => Math.max(0, Math.min(images.length - 1, index + direction)));
   }
 
-  return <><section className={`mobile-product-experience fixed inset-0 z-[55] h-[100dvh] min-h-0 overflow-hidden bg-[#eee9e7] transition-transform duration-500 ease-[cubic-bezier(.22,.8,.25,1)] lg:hidden ${recommendationsOpen ? "-translate-y-[38dvh]" : "translate-y-0"}`}>
+  return <><section className={`mobile-product-experience fixed inset-0 z-[55] h-[100dvh] min-h-0 overflow-hidden bg-white transition-transform duration-500 ease-[cubic-bezier(.22,.8,.25,1)] lg:hidden ${recommendationsOpen ? "-translate-y-[38dvh]" : "translate-y-0"}`}>
     <div
       className="absolute inset-0 touch-pan-y"
       onClick={() => { if (!didSwipe.current) setOptionsOpen((open) => !open); didSwipe.current = false; }}
@@ -58,19 +58,17 @@ export function MobileProductView({ images, product, alternatives }: { images: s
       }}
     >
       <div className={`flex h-full w-full ${dragging ? "transition-none" : "transition-transform duration-500 ease-[cubic-bezier(.22,.8,.25,1)]"}`} style={{ transform: `translate3d(calc(${-activeIndex * 100}% + ${dragOffset}px), 0, 0)` }}>
-        {images.map((image, index) => <div key={`${image}-${index}`} className="relative h-full w-full flex-none"><Image src={image} alt={`${product.name} photo ${index + 1}`} fill priority={index === 0} loading={index === 0 ? "eager" : "lazy"} draggable={false} className="select-none object-cover" sizes="100vw" /></div>)}
+        {images.map((image, index) => <div key={`${image}-${index}`} className="relative h-full w-full flex-none bg-white"><Image src={image} alt={`${product.name} photo ${index + 1}`} fill priority={index === 0} loading={index === 0 ? "eager" : "lazy"} draggable={false} className="select-none object-contain" sizes="100vw" /></div>)}
       </div>
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-black/35 to-transparent" />
-      <div className={`pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent transition-all duration-300 ${optionsOpen ? "h-40 opacity-30" : "h-72 opacity-100"}`} />
     </div>
 
-    <div className="pointer-events-none absolute inset-x-0 top-0 flex items-start justify-between px-5 pb-5 pt-[max(1.25rem,env(safe-area-inset-top))] text-white">
-      <div><p className="text-[10px] font-semibold uppercase tracking-[.16em] text-white/75">{product.collection} / ALAS</p><h1 className="font-editorial mt-1 text-2xl drop-shadow-sm">{product.name}</h1><p className="mt-1.5 text-sm font-semibold text-white drop-shadow-sm">{formatPeso(price)}</p></div>
-      <Link href="/cart" aria-label={`Shopping bag with ${cartCount} items`} className="pointer-events-auto relative grid h-11 w-11 place-items-center rounded-2xl border border-white/25 bg-black/25 text-white shadow-[0_8px_22px_rgba(0,0,0,.18)] backdrop-blur-md"><svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M5.5 8.5h13l-1 12h-11l-1-12Z" /><path d="M9 9V6.5a3 3 0 0 1 6 0V9" /></svg>{cartCount > 0 && <span className="absolute -right-1.5 -top-1.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-white px-1 text-[10px] font-bold text-black shadow-sm">{cartCount}</span>}</Link>
+    <div className="pointer-events-none absolute inset-x-0 top-0 flex items-start justify-between px-5 pb-5 pt-[max(1.25rem,env(safe-area-inset-top))] text-black">
+      <div><p className="text-[10px] font-semibold uppercase tracking-[.16em] text-black/45">{product.collection} / ALAS</p><h1 className="font-editorial mt-1 text-2xl">{product.name}</h1><p className="mt-1.5 text-sm font-semibold text-black/65">{formatPeso(price)}</p></div>
+      <Link href="/cart" aria-label={`Shopping bag with ${cartCount} items`} className="pointer-events-auto relative grid h-11 w-11 place-items-center rounded-2xl border border-black/[0.08] bg-white/90 text-black shadow-[0_8px_22px_rgba(0,0,0,.09)] backdrop-blur-md"><svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M5.5 8.5h13l-1 12h-11l-1-12Z" /><path d="M9 9V6.5a3 3 0 0 1 6 0V9" /></svg>{cartCount > 0 && <span className="absolute -right-1.5 -top-1.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-black px-1 text-[10px] font-bold text-white shadow-sm">{cartCount}</span>}</Link>
     </div>
 
     {images.length > 1 && <div className={`absolute inset-x-0 flex justify-center gap-1.5 transition-all duration-300 ${optionsOpen ? "bottom-[calc(48dvh+12px)]" : "bottom-[calc(env(safe-area-inset-bottom)+6.75rem)]"}`} style={optionsOpen && sheetOffset > 0 ? { transform: `translateY(${sheetOffset}px)` } : undefined} aria-label={`Photo ${activeIndex + 1} of ${images.length}`}>
-      {images.map((_, index) => <button key={index} type="button" onClick={(event) => { event.stopPropagation(); setActiveIndex(index); }} aria-label={`Show photo ${index + 1}`} className={`h-1.5 rounded-full shadow-sm transition-all ${index === activeIndex ? "w-6 bg-white" : "w-1.5 bg-white/55"}`} />)}
+      {images.map((_, index) => <button key={index} type="button" onClick={(event) => { event.stopPropagation(); setActiveIndex(index); }} aria-label={`Show photo ${index + 1}`} className={`h-1.5 rounded-full transition-all ${index === activeIndex ? "w-6 bg-black" : "w-1.5 bg-black/20"}`} />)}
     </div>}
 
     {!optionsOpen && <button type="button" onClick={() => setOptionsOpen(true)} className="absolute bottom-[calc(env(safe-area-inset-bottom)+1rem)] left-4 right-[5.25rem] flex min-h-[64px] items-center gap-2.5 rounded-[22px] border border-white bg-white p-2 text-left text-black shadow-[0_18px_45px_rgba(0,0,0,.24)]">
