@@ -7,13 +7,17 @@ import Image from "next/image";
 type Message = { id: string; sender_type: "CUSTOMER" | "AI" | "ADMIN" | "SYSTEM"; content: string; created_at: string; delivery_status?: string };
 type Conversation = { id: string; mode: "AI_ACTIVE" | "HUMAN_ACTIVE" | "AI_PAUSED" | "RESOLVED"; status: string; ai_pending?: boolean; messages?: Message[] };
 
+function chronological(messages: Message[] = []) {
+  return [...messages].sort((left, right) => left.created_at.localeCompare(right.created_at) || left.id.localeCompare(right.id));
+}
+
 export function ChatWidget() {
   const [open, setOpen] = useState(false); const [conversation, setConversation] = useState<Conversation | null>(null); const [messages, setMessages] = useState<Message[]>([]);
   const [text, setText] = useState(""); const [busy, setBusy] = useState(false); const [connection, setConnection] = useState<"connecting" | "connected" | "reconnecting" | "error">("connecting");
   const [aiPending, setAiPending] = useState(false);
   const bottom = useRef<HTMLDivElement>(null);
   const load = useCallback(async () => {
-    try { const response = await fetch("/api/support/conversation", { cache: "no-store" }); if (!response.ok) throw new Error(); const body = await response.json(); setConversation(body.data); setMessages(body.data?.messages ?? []); setAiPending(Boolean(body.data?.ai_pending)); setConnection("connected"); }
+    try { const response = await fetch("/api/support/conversation", { cache: "no-store" }); if (!response.ok) throw new Error(); const body = await response.json(); setConversation(body.data); setMessages(chronological(body.data?.messages)); setAiPending(Boolean(body.data?.ai_pending)); setConnection("connected"); }
     catch { setConnection((value) => value === "connected" ? "reconnecting" : "error"); }
   }, []);
   useEffect(() => { const timer = window.setTimeout(() => void load(), 0); return () => window.clearTimeout(timer); }, [load]);
@@ -33,7 +37,7 @@ export function ChatWidget() {
 
   async function start() {
     const path = window.location.pathname; const match = path.match(/^\/products\/([^/]+)/);
-    setBusy(true); try { const response = await fetch("/api/support/conversation", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ context: { page_path: path, product_slug: match ? decodeURIComponent(match[1]) : undefined } }) }); const body = await response.json(); if (!response.ok) throw new Error(body.error?.message); setConversation(body.data); setMessages(body.data.messages ?? []); setAiPending(Boolean(body.data.ai_pending)); setConnection("connected"); } catch { setConnection("error"); } finally { setBusy(false); }
+    setBusy(true); try { const response = await fetch("/api/support/conversation", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ context: { page_path: path, product_slug: match ? decodeURIComponent(match[1]) : undefined } }) }); const body = await response.json(); if (!response.ok) throw new Error(body.error?.message); setConversation(body.data); setMessages(chronological(body.data.messages)); setAiPending(Boolean(body.data.ai_pending)); setConnection("connected"); } catch { setConnection("error"); } finally { setBusy(false); }
   }
   async function send(event: FormEvent) {
     event.preventDefault(); const content = text.trim(); if (!content || busy || !conversation) return; const clientMessageId = crypto.randomUUID();
