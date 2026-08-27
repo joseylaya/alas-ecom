@@ -77,7 +77,7 @@ export function MobileProductView({ images, product, alternatives }: { images: s
       <span className="grid h-11 w-11 flex-none place-items-center rounded-[14px] bg-gradient-to-br from-black via-[#202020] to-[#454545] text-white shadow-[0_8px_18px_rgba(0,0,0,.22)]"><svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg></span>
     </button>}
 
-    <div className={`absolute inset-x-0 bottom-0 h-[48dvh] overflow-y-auto rounded-t-[30px] bg-white px-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-3 shadow-[0_-24px_70px_rgba(0,0,0,.24)] ease-out ${sheetDragging ? "transition-none" : "transition-transform duration-300"}`} style={{ transform: optionsOpen ? `translateY(${sheetOffset}px)` : "translateY(105%)" }} aria-hidden={!optionsOpen}>
+    <div className={`absolute inset-x-0 bottom-0 h-[48dvh] overflow-y-auto rounded-t-[30px] bg-white px-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-3 ease-out ${optionsOpen ? "shadow-[0_-24px_70px_rgba(0,0,0,.24)]" : "shadow-none"} ${sheetDragging ? "transition-none" : "transition-transform duration-300"}`} style={{ transform: optionsOpen ? `translateY(${sheetOffset}px)` : "translateY(105%)" }} aria-hidden={!optionsOpen}>
       <button
         type="button"
         onClick={() => setOptionsOpen(false)}
@@ -92,7 +92,7 @@ export function MobileProductView({ images, product, alternatives }: { images: s
       <AddToCart product={product} showCheckout />
     </div>
   </section>
-    {alternatives.length > 0 && <section className={`fixed inset-x-0 bottom-0 z-[56] h-[38dvh] rounded-t-[30px] bg-[#fcf8f8] px-5 pb-[max(1rem,env(safe-area-inset-bottom))] pt-4 shadow-[0_-22px_65px_rgba(0,0,0,.18)] transition-transform duration-500 ease-[cubic-bezier(.22,.8,.25,1)] lg:hidden ${recommendationsOpen ? "translate-y-0" : "translate-y-full"}`}>
+    {alternatives.length > 0 && <section className={`fixed inset-x-0 bottom-0 z-[56] h-[38dvh] rounded-t-[30px] bg-[#fcf8f8] px-5 pb-[max(1rem,env(safe-area-inset-bottom))] pt-4 transition-transform duration-500 ease-[cubic-bezier(.22,.8,.25,1)] lg:hidden ${recommendationsOpen ? "translate-y-0 shadow-[0_-22px_65px_rgba(0,0,0,.18)]" : "translate-y-full shadow-none"}`}>
       <button type="button" onClick={() => setRecommendationsOpen(false)} className="mx-auto block px-8 pb-3" aria-label="Return to product"><span className="block h-1.5 w-14 rounded-full bg-black/15" /></button>
       <div className="mb-3 flex items-end justify-between"><div><p className="text-[9px] font-semibold uppercase tracking-[.16em] text-black/40">Continue exploring</p><h2 className="font-editorial mt-1 text-xl">You may also like</h2></div><span className="text-[9px] uppercase tracking-[.12em] text-black/40">Swipe</span></div>
       <div className="flex snap-x gap-3 overflow-x-auto pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
