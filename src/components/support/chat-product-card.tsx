@@ -1,0 +1,33 @@
+"use client";
+
+import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { useCartStore } from "@/features/cart/cart-store";
+import type { Product } from "@/types/catalog";
+
+type Result = { status: string; price_centavos?: number; stock?: number; product_name?: string; size?: string; color?: string; quantity?: number };
+
+export function ChatProductCard({ product, initialVariantId, messageId, onAction }: { product: Product; initialVariantId?: string; messageId: string; onAction: () => void }) {
+  const router = useRouter(); const addItem = useCartStore((state) => state.addItem);
+  const available = product.variants.filter((variant) => variant.stock > 0);
+  const [variantId, setVariantId] = useState(initialVariantId && product.variants.some((variant) => variant.id === initialVariantId) ? initialVariantId : available[0]?.id ?? "");
+  const [busy, setBusy] = useState<"SELECT_VARIANT" | "ADD_TO_CART" | "BUY_NOW" | null>(null); const [notice, setNotice] = useState(""); const [added, setAdded] = useState(false);
+  const selected = product.variants.find((variant) => variant.id === variantId);
+  const colors = [...new Set(product.variants.map((variant) => variant.color))];
+  async function act(action: "SELECT_VARIANT" | "ADD_TO_CART" | "BUY_NOW", nextVariantId = variantId) {
+    const variant = product.variants.find((item) => item.id === nextVariantId); if (!variant || busy) return false;
+    setBusy(action); setNotice("");
+    try {
+      const response = await fetch("/api/support/commerce-action", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ action, productId: product.id, variantId: variant.id, quantity: 1, messageId, displayedPriceCentavos: variant.priceCentavos, idempotencyKey: `${messageId}:${action}:${variant.id}` }) });
+      const body = await response.json() as { data?: Result; error?: { message?: string } }; const result = body.data;
+      if (!response.ok || !result || result.status !== "SUCCESS") { setNotice(result?.status === "OUT_OF_STOCK" ? "Sold out just now — choose another size." : result?.status === "PRICE_CHANGED" ? `Price updated to ₱${((result.price_centavos ?? 0) / 100).toFixed(2)}. Please review it again.` : body.error?.message ?? "That action could not be completed."); return false; }
+      if (action !== "SELECT_VARIANT") { addItem({ variantId: variant.id, productSlug: product.slug, productName: product.name, image: product.image, size: variant.size, color: variant.color, displayPriceCentavos: result.price_centavos ?? variant.priceCentavos, quantity: 1 }); setAdded(true); }
+      if (action === "BUY_NOW") router.push("/checkout");
+      onAction(); return true;
+    } catch { setNotice("Connection issue — please try again."); return false; } finally { setBusy(null); }
+  }
+  if (!selected) return <div className="w-[min(100%,330px)] rounded-[22px] bg-white p-4 text-sm text-black/60 shadow-[0_10px_30px_rgba(0,0,0,.08)]">This item is currently sold out.</div>;
+  return <article className="w-[min(100%,340px)] overflow-hidden rounded-[22px] bg-white p-3 shadow-[0_13px_35px_rgba(0,0,0,.10)]"><Link href={`/products/${product.slug}`} className="relative block aspect-[4/3] overflow-hidden rounded-[16px] bg-[#f4f4f4]"><Image src={product.image} alt={product.name} fill sizes="340px" className="object-cover" /></Link><div className="px-1 pb-1 pt-3"><div className="flex items-start justify-between gap-3"><div><h3 className="text-sm font-semibold text-[#171717]">{product.name}</h3><p className="mt-0.5 text-sm font-semibold text-black">₱{(selected.priceCentavos / 100).toFixed(2)}</p></div><span className={`mt-1 rounded-full px-2 py-1 text-[10px] font-semibold ${selected.stock > 3 ? "bg-emerald-50 text-emerald-700" : "bg-orange-50 text-orange-700"}`}>{selected.stock > 3 ? "Available" : `${selected.stock} left`}</span></div>{colors.length > 1 && <><p className="mt-3 text-[10px] font-semibold uppercase tracking-[.12em] text-black/45">Color</p><div className="mt-2 flex flex-wrap gap-1.5">{colors.map((color) => { const variant = product.variants.find((item) => item.color === color && item.stock > 0) ?? product.variants.find((item) => item.color === color); return <button key={color} disabled={!variant || variant.stock < 1 || busy !== null} onClick={() => { if (!variant) return; setVariantId(variant.id); void act("SELECT_VARIANT", variant.id); }} className={`min-h-9 rounded-full px-3 text-xs font-semibold transition ${selected.color === color ? "bg-black text-white" : "bg-[#f1f1f1] text-black"} disabled:opacity-35`}>{color}</button>; })}</div></>}<p className="mt-3 text-[10px] font-semibold uppercase tracking-[.12em] text-black/45">Choose size</p><div className="mt-2 flex flex-wrap gap-1.5">{product.variants.filter((variant) => variant.color === selected.color).map((variant) => <button key={variant.id} disabled={variant.stock < 1 || busy !== null} onClick={() => { setVariantId(variant.id); void act("SELECT_VARIANT", variant.id); }} className={`min-h-9 rounded-full px-3 text-xs font-semibold transition focus:outline-none focus:ring-2 focus:ring-black/30 ${variant.id === variantId ? "bg-black text-white" : "bg-[#f1f1f1] text-black"} disabled:cursor-not-allowed disabled:opacity-35`}>{variant.size}{variant.stock < 1 ? " · sold out" : ""}</button>)}</div><Link href={`/products/${product.slug}`} className="mt-3 flex min-h-10 items-center justify-center rounded-full bg-[#f3f3f3] px-4 text-xs font-semibold text-black transition hover:bg-[#e8e8e8]">View Product</Link>{added ? <div className="mt-2 grid grid-cols-2 gap-2"><Link href="/cart" className="flex min-h-10 items-center justify-center rounded-full bg-[#f3f3f3] px-3 text-xs font-semibold">View Cart</Link><Link href="/checkout" className="flex min-h-10 items-center justify-center rounded-full bg-black px-3 text-xs font-semibold text-white">Checkout</Link></div> : <div className="mt-2 grid grid-cols-2 gap-2"><button disabled={busy !== null || selected.stock < 1} onClick={() => void act("ADD_TO_CART")} className="min-h-10 rounded-full bg-[#f3f3f3] px-3 text-xs font-semibold text-black disabled:opacity-40">{busy === "ADD_TO_CART" ? "Adding…" : "Add to Cart"}</button><button disabled={busy !== null || selected.stock < 1} onClick={() => void act("BUY_NOW")} className="min-h-10 rounded-full bg-black px-3 text-xs font-semibold text-white disabled:opacity-40">{busy === "BUY_NOW" ? "Opening…" : "Buy Now"}</button></div>}{notice && <p role="status" className="mt-2 text-xs leading-4 text-red-700">{notice}</p>}</div></article>;
+}
