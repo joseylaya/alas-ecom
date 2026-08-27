@@ -8,7 +8,9 @@ type Message = { id: string; sender_type: "CUSTOMER" | "AI" | "ADMIN" | "SYSTEM"
 type Conversation = { id: string; mode: "AI_ACTIVE" | "HUMAN_ACTIVE" | "AI_PAUSED" | "RESOLVED"; status: string; ai_pending?: boolean; messages?: Message[] };
 
 function chronological(messages: Message[] = []) {
-  return [...messages].sort((left, right) => left.created_at.localeCompare(right.created_at) || left.id.localeCompare(right.id));
+  // Laravel's ordered UUIDs preserve creation order even for legacy replies
+  // written by queue workers that used a different timezone.
+  return [...messages].sort((left, right) => left.id.localeCompare(right.id));
 }
 
 export function ChatWidget() {
