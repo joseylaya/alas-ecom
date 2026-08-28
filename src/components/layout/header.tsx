@@ -7,6 +7,7 @@ import { Logo } from "@/components/layout/logo";
 import { useCartStore } from "@/features/cart/cart-store";
 import { productPrice, searchProducts } from "@/lib/catalog-discovery";
 import { formatPeso } from "@/lib/money";
+import { supabase } from "@/lib/supabase-browser";
 import type { Product } from "@/types/catalog";
 
 function SearchIcon() { return <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="10.75" cy="10.75" r="6.75" /><path d="m15.75 15.75 4.25 4.25" /></svg>; }
@@ -18,6 +19,7 @@ export function Header({ products }: { products: Product[] }) {
   const pathname = usePathname();
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [query, setQuery] = useState("");
+  const [accountHref, setAccountHref] = useState("/login");
   const count = useCartStore((state) => state.items.reduce((sum, item) => sum + item.quantity, 0));
   const results = useMemo(() => query.trim() ? searchProducts(products, query).slice(0, 5) : products.slice(0, 3), [products, query]);
   const closeSearch = () => { setIsSearchOpen(false); setQuery(""); };
@@ -29,6 +31,7 @@ export function Header({ products }: { products: Product[] }) {
     window.addEventListener("keydown", onKeyDown);
     return () => { document.body.style.overflow = ""; window.removeEventListener("keydown", onKeyDown); };
   }, [isSearchOpen]);
+  useEffect(() => { void supabase.auth.getUser().then(({ data }) => setAccountHref(data.user?.email_confirmed_at ? "/account" : "/login")); }, []);
 
   if (pathname.startsWith("/checkout")) return null;
   const shopSearchUrl = `/shop${query.trim() ? `?q=${encodeURIComponent(query.trim())}` : ""}`;
@@ -38,7 +41,7 @@ export function Header({ products }: { products: Product[] }) {
       <nav className="mx-auto grid min-h-20 max-w-7xl grid-cols-[1fr_auto_1fr] items-center md:min-h-0">
         <div className="flex items-center gap-7 text-xs"><Link className={pathname === "/shop" ? "border-b border-black pb-1" : ""} href="/shop">Shop</Link><Link href="/#story" className="hidden md:block">Editorial</Link></div>
         <Logo />
-        <div className="flex items-center justify-end gap-4 sm:gap-5"><button type="button" aria-label="Search products" onClick={() => setIsSearchOpen(true)} className="grid h-10 w-10 place-items-center rounded-full transition hover:bg-black/5"><SearchIcon /></button><Link aria-label="Customer account" href="/login" className="hidden h-10 w-10 place-items-center rounded-full transition hover:bg-black/5 md:grid"><UserIcon /></Link><Link aria-label={`Shopping bag with ${count} items`} href="/cart" className="relative grid h-10 w-10 place-items-center rounded-full transition hover:bg-black/5"><BagIcon />{count > 0 && <span className="absolute right-0 top-0 flex h-4 min-w-4 items-center justify-center rounded-full bg-black px-1 text-[9px] text-white">{count}</span>}</Link></div>
+        <div className="flex items-center justify-end gap-4 sm:gap-5"><button type="button" aria-label="Search products" onClick={() => setIsSearchOpen(true)} className="grid h-10 w-10 place-items-center rounded-full transition hover:bg-black/5"><SearchIcon /></button><Link aria-label="Customer account" href={accountHref} className="hidden h-10 w-10 place-items-center rounded-full transition hover:bg-black/5 md:grid"><UserIcon /></Link><Link aria-label={`Shopping bag with ${count} items`} href="/cart" className="relative grid h-10 w-10 place-items-center rounded-full transition hover:bg-black/5"><BagIcon />{count > 0 && <span className="absolute right-0 top-0 flex h-4 min-w-4 items-center justify-center rounded-full bg-black px-1 text-[9px] text-white">{count}</span>}</Link></div>
       </nav>
     </header>
 
